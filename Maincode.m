@@ -95,16 +95,15 @@ eigenvaluesT=(eigenvalues*(1+0))-0;
 omega=sqrt(eigenvaluesT);
 f=omega/(2*pi);
 
+% sort out eigenvalues
+[omega,ii] = sort(omega);
+modes = modes(:,ii);
+
 
 % Liew, p-Ritz 
 D0 = Q(2,2)*(h^3/12);  %e2*hˆ3/12/(1-miu12*miu21);
 % dimensionless omega
 omega_bar = (omega*Ly*Ly/pi^2)*sqrt(rho*h/D0);
-
-
-% sort out eigenvalues
-[omega,ii] = sort(omega);
-modes = modes(:,ii);
 
 
 % drawing mesh and deformed shape
@@ -136,4 +135,5 @@ display(f)
 toc
 
 %profile off;
+
 %p = profile('info') % Get profiler data structure
